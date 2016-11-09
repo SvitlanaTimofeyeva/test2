@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="app">
+<head>
+    <meta charset="utf-8" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/bootstrap.css" rel="stylesheet" /> 
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script> 
+	<script src="lib/inputmask.js"></script>
+	<script src="lib/jquery.maskMoney.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.3/inputmask/inputmask.js"></script> 
+    <script src="lib/vivus.min.js"></script> 
+	<script src="lib/angular.js"></script>
+    <script src="js/input_directive.js"></script> 
+
+	<script src="js/validation.js"></script>
+    <script src="js/validation_2.js"></script>
+	<script src="js/animations.js"></script>
+	<script src="js/dropdown.js"></script>
+	<script src="js/multi_inputs.js"></script>	
+	<script src="js/data.js"></script>  
+    <script src="js/data_handler.js"></script>  
+    <script src="js/form_directive.js"></script>
+    <script src="js/main.js"></script> 
+
+    <title>Form Demo 5</title>
+</head>
+
+<body id="body" ng-controller="mainCtrl">
+    <div class="progress-bar-top">
+        <div class="meter-top">
+            <span style="width: 0%"></span>
+        </div>
+        <span class="stats"><span id="num">{{shown_cat}}</span>/{{all}}</span>
+    </div>
+
+    <div class="content">
+        <div class="title" id="cat-title">organization information</div>
+        <div class="col-md-12" id="form-wrap" ng-controller="inputCtrl">
+            <!-- <form id="myForm" name="ContactForm"> -->
+                <div class="inp-container" ng-repeat="index in indices track by $index">
+                    <pretty-input num="index" input="{{inputs}}"></pretty-input>
+                </div>
+            <!-- </form> -->
+        </div>
+
+        <div class="form-wrap-2"></div>
+        <button id="continue-btn" ng-click="change_cat()">Continue</button>
+		<p id="err"></p>
+    </div>
+
+    <div class="thanx">
+        Thank you for your time!
+    </div>
+
+
+</body>
+</html>

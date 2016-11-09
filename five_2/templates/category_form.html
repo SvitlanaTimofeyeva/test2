@@ -1,0 +1,57 @@
+﻿<form name="bigform" class="bigform" id="bigform{{cat}}"> 
+    <div class="sub-cat" ng-repeat="ct in subs track by $index" ng-show="ct.view == 0"> 
+       
+        <h2 class="form-2-bold">{{ct.title}}</h2> 
+        <p class="form-2">{{ct.subtitle}}</p>
+        <div class="bigform-wrap" ng-repeat="item in ct.types track by $index"> 
+           
+
+            <div ng-class="{visible: item == 'i', hidden: item != 'i'}">
+                <h3 class="form-2">{{ct.placeholders[$index]}}{{ct.all_placeholders[$index]}}</h3>
+                <p class="form-2">{{ct.prompts[$index]}}</p>
+                <input type="text" class="form-input margin" placeholder="{{ct.placeholders[$index]}}{{ct.all_placeholders[$index]}}" value="{{ct.data[$index]}}"/>
+
+            </div> 
+            <div ng-class="{visible: item == 't', hidden: item != 't'}">
+                <h3 class="form-2">{{ct.placeholders[$index]}}</h3>
+                <p class="form-2">{{ct.prompts[$index]}}</p>
+                <textarea class="form-textarea-2 margin"  placeholder="{{ct.placeholders[$index]}}" value="{{ct.data[$index]}}" />
+            </div>
+            <div ng-class="{visible: item == 'r', hidden: item != 'r'}">
+                <h3 class="form-2">{{ct.placeholders[$index]}}{{ct.all_placeholders[$index]}}</h3>
+                <p class="form-2">{{ct.prompts[$index]}}</p> 
+
+                <div class="btn-container">
+                    <div class="checkbox checkx">
+                        <label class="capt"><input type="checkbox" value="">Check if yes</label>
+                    </div>
+            </div>
+            </div>
+            <div ng-class="{visible: item == 'f', hidden: item != 'f'}">
+                <h3 class="form-2">{{ct.placeholders[$index]}}{{ct.all_placeholders[$index]}}</h3>
+                <p class="form-2">{{ct.prompts[$index]}}</p>  
+                <div class="btn-container">
+                <label class="add-btn plus" id="add{{num}}" ng-click="add_field($event)">
+                    <input type="file" />
+                    <img src="img/plus.png" class="icon-visible" />
+                </label> 
+                </div>
+            </div>
+            <div ng-class="{visible: item == 'd', hidden: item != 'd'}">
+               
+                <div class="form-select" ng-repeat="d in ct.placeholders track by $index">
+                <h3 class="form-2">{{d}}</h3>
+                <select multiple class="form-control form-sel" data-live-search="true">
+                    <optgroup ng-show="$parent.$last" ng-repeat="i in ct.values[$parent.$index] track by $index" label="{{i}}">
+                        <option ng-repeat="v in ct.drops[$index] track by $index">
+                            {{v}}
+                        </option>
+                    </optgroup> 
+                    <option ng-repeat="val in ct.values[$parent.$index] track by $index" ng-show="$parent.$first">{{val}}</option>
+                </select>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</form>
